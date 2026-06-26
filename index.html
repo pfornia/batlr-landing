@@ -160,23 +160,41 @@
     }
     .cta .email:hover { color: var(--dark); }
 
-    /* PRICING */
-    .pricing {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      padding: 3.5rem 2rem;
+    /* WHY BATLR */
+    .why {
+      background: var(--cream);
+      padding: 5rem 2rem;
       text-align: center;
     }
-    .pricing-inner {
-      max-width: 580px;
-      margin: 0 auto;
-    }
-    .pricing h3 {
-      font-size: 1.25rem;
+    .why h2 {
+      font-size: 1.9rem;
       font-weight: 700;
+      margin-bottom: 3rem;
+    }
+    .advantages {
+      display: flex;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .advantage {
+      flex: 1;
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--white);
+    }
+    .advantage-icon {
+      font-size: 1.5rem;
       margin-bottom: 0.75rem;
     }
-    .pricing p { color: var(--muted); font-size: 1rem; }
+    .advantage h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .advantage p { color: var(--muted); font-size: 0.95rem; }
 
     /* FOOTER */
     footer {
@@ -195,6 +213,7 @@
       .hero p { font-size: 1.05rem; }
       .how { padding: 4rem 1.5rem; }
       .steps { flex-direction: column; }
+      .advantages { flex-direction: column; }
       .credibility { padding: 3.5rem 1.5rem; }
       .cta { padding: 4rem 1.5rem; }
     }
@@ -219,30 +238,44 @@
       <div class="step">
         <div class="step-num">1</div>
         <h3>Integrate</h3>
-        <p>A lightweight REST API call is all it takes. Connect to your existing platform in days, with no infrastructure overhaul required.</p>
+        <p>A lightweight REST API call is all it takes. Connect in days, no infrastructure overhaul required.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <h3>Classify</h3>
-        <p>Our AI models analyze conversation patterns and flag suspicious users in real time, before scams complete. We work to minimize personally identifiable information before message content reaches our AI provider.</p>
+        <p>Our AI models analyze conversation patterns and flag suspicious users. Classify in real time or on a scheduled batch cadence.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <h3>Act</h3>
-        <p>Risk scores and recommendations plug directly into your existing T&amp;S workflows and treatments. Enforce however you already do — no new processes required.</p>
+        <p>Risk scores plug directly into your existing T&amp;S workflows. Enforce however you already do.</p>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <h3>Monitor</h3>
-        <p>Track scam trends and measure impact through dashboards and alerts. Know what's happening on your platform in real time, and prove the system is working.</p>
+        <p>Track scam trends and measure impact through dashboards and alerts.</p>
       </div>
     </div>
   </section>
 
-  <section class="pricing">
-    <div class="pricing-inner">
-      <h3>Simple, predictable pricing</h3>
-      <p>One fixed monthly cost. BATLR.ai handles all token and usage management internally. No per-call billing surprises, no ballooning AI fees as your message volume grows.</p>
+  <section class="why">
+    <h2>The BATLR Advantage</h2>
+    <div class="advantages">
+      <div class="advantage">
+        <div class="advantage-icon">&#128181;</div>
+        <h3>Predictable pricing</h3>
+        <p>One fixed monthly cost. We handle all token and usage management internally. No per-call fees, no ballooning AI costs as your volume grows.</p>
+      </div>
+      <div class="advantage">
+        <div class="advantage-icon">&#128274;</div>
+        <h3>Privacy-conscious</h3>
+        <p>We work to minimize personally identifiable information before message content reaches our AI provider.</p>
+      </div>
+      <div class="advantage">
+        <div class="advantage-icon">&#128301;</div>
+        <h3>Always current</h3>
+        <p>We track emerging scam tactics and proactively update our classifiers -- inoculating your platform against new attack patterns before they spread to your users.</p>
+      </div>
     </div>
   </section>
 
