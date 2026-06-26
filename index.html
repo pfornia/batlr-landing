@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BATLR.AI — AI Scam Detection for P2P Platforms</title>
+  <meta name="description" content="Real-time AI scam detection API for peer-to-peer marketplaces and online communities. Built by former Meta Integrity engineers.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark:    #1a1a1a;
+      --accent:  #e8401c;
+      --cream:   #faf7f3;
+      --white:   #ffffff;
+      --border:  #e0d8cf;
+      --muted:   #666666;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 4rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav img { height: 34px; }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 0.65rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.15s;
+      display: inline-block;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-lg {
+      font-size: 1rem;
+      padding: 0.9rem 2.2rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 720px;
+      margin: 0 auto 1.4rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2.2rem;
+    }
+
+    /* HOW IT WORKS */
+    .how {
+      background: var(--white);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .how h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+    }
+    .steps {
+      display: flex;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .step {
+      flex: 1;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .step-num {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .step p { color: var(--muted); font-size: 0.95rem; }
+
+    /* CREDIBILITY */
+    .credibility {
+      background: var(--dark);
+      color: #aaa;
+      padding: 4.5rem 2rem;
+      text-align: center;
+    }
+    .credibility p {
+      font-size: 1.15rem;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    .credibility strong { color: white; }
+
+    /* CTA */
+    .cta {
+      padding: 5.5rem 2rem;
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .cta .email {
+      display: block;
+      margin-top: 1.2rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+    .cta .email:hover { color: var(--dark); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: #555;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    /* MOBILE */
+    @media (max-width: 700px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1.05rem; }
+      .how { padding: 4rem 1.5rem; }
+      .steps { flex-direction: column; }
+      .credibility { padding: 3.5rem 1.5rem; }
+      .cta { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <img src="assets/logo.png" alt="BATLR.AI">
+    <a href="https://calendly.com/paul-batlr/1-1chat" class="btn">Book a Demo</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Stop scammers before they<br><span>cost you users</span></h1>
+    <p>BATLR.ai is a real-time AI scam detection API for P2P marketplaces and online communities. Integrate once, protect your users continuously.</p>
+    <a href="https://calendly.com/paul-batlr/1-1chat" class="btn btn-lg">Book a Discovery Call</a>
+  </section>
+
+  <section class="how">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Integrate</h3>
+        <p>Send message data to our REST API as it flows through your platform. No infrastructure overhaul required.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Classify</h3>
+        <p>Our LLM-based models analyze conversation patterns and flag suspicious users in real time, before scams complete.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Act</h3>
+        <p>Receive risk scores and recommendations. Warn, restrict, or ban scammers automatically or through your T&amp;S team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="credibility">
+    <p><strong>Built by a former Meta Integrity engineer</strong> who spent 5 years building scam detection for Facebook Marketplace and WhatsApp Business. We know what scam looks like at scale, and we built BATLR.ai to bring that to platforms that can't afford a Meta-sized Trust &amp; Safety team.</p>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to protect your users?</h2>
+    <a href="https://calendly.com/paul-batlr/1-1chat" class="btn btn-lg">Book a Discovery Call</a>
+    <a href="mailto:paul@batlr.ai" class="email">or reach out at paul@batlr.ai</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 BATLR.AI · Denver, CO</p>
+  </footer>
+
+</body>
+</html>
