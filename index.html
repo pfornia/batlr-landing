@@ -172,14 +172,14 @@
       margin-bottom: 3rem;
     }
     .advantages {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
       text-align: left;
     }
     .advantage {
-      flex: 1;
       padding: 1.75rem;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -195,6 +195,8 @@
       margin-bottom: 0.5rem;
     }
     .advantage p { color: var(--muted); font-size: 0.95rem; }
+    .advantage a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .advantage a:hover { text-decoration: underline; }
 
     /* FOOTER */
     footer {
@@ -213,7 +215,7 @@
       .hero p { font-size: 1.05rem; }
       .how { padding: 4rem 1.5rem; }
       .steps { flex-direction: column; }
-      .advantages { flex-direction: column; }
+      .advantages { grid-template-columns: 1fr; }
       .credibility { padding: 3.5rem 1.5rem; }
       .cta { padding: 4rem 1.5rem; }
     }
@@ -261,6 +263,11 @@
   <section class="why">
     <h2>The BATLR Advantage</h2>
     <div class="advantages">
+      <div class="advantage">
+        <div class="advantage-icon">&#127919;</div>
+        <h3>Accurate</h3>
+        <p>In benchmark testing on 5,572 real-world messages, BATLR flags over 2x more scammers than AI alone. Our false alarm rate is under 1%, and overall accuracy exceeds 99%. <a href="benchmark.html">See our full methodology.</a></p>
+      </div>
       <div class="advantage">
         <div class="advantage-icon">&#128181;</div>
         <h3>Predictable pricing</h3>
