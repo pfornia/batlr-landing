@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benchmark Methodology and Results — BATLR.AI</title>
+  <title>Benchmark Methodology and Results | BATLR.AI</title>
   <meta name="description" content="Full methodology and results for BATLR's scam detection benchmark on 5,572 real-world messages. ROC AUC 0.987. 2x more scammers caught than a naive AI implementation.">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -226,6 +226,8 @@
     <p class="article-meta">Benchmark Report &middot; July 2026</p>
     <h1>BATLR vs. AI Alone: Benchmark Methodology and Results</h1>
 
+    <p style="font-size: 0.975rem; color: #333; margin-bottom: 1.5rem;">We are often asked: "Why does our platform need a specialized solution when we could just ask AI to classify our messages?" It is a fair question, and we set out to answer it directly by comparing BATLR against a simple, unengineered AI prompt on the same data.</p>
+
     <p class="article-summary">
       We ran BATLR's engineered scam classifier against a naive AI baseline on 5,572 real-world messages. At our recommended ban threshold, BATLR catches over 2x more scammers with essentially the same false alarm rate. Here is exactly how we measured that.
     </p>
@@ -393,6 +395,8 @@
     </div>
 
     <p>BATLR's system prompt is roughly 3.5x longer than the baseline due to its guidelines and few-shot examples. At production scale, OpenAI's automatic prompt prefix caching applies a 50% discount on the input tokens that repeat across requests, which partially offsets this cost.</p>
+
+    <p><em>Note: This benchmarking exercise was designed to compare the accuracy of two AI prompts, independent of cost. In practice, the BATLR API fully handles all cost and token management on your behalf. The cost of every AI classification is included in one simple, fixed monthly subscription price.</em></p>
 
     <div class="article-cta">
       <h2>Want to see this in action on your platform?</h2>
