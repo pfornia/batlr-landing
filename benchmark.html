@@ -242,7 +242,7 @@
 
     <p>Both classifiers used the same underlying model (<code>gpt-4o-mini</code>), the same temperature (<code>0.3</code>), and the same JSON response format. The only variable is the system prompt. This isolates prompt engineering value from model capability or infrastructure differences.</p>
 
-    <p>Both classifiers produced a continuous <code>risk_score</code> from 0.0 to 1.0 for each example. All threshold analysis is post-hoc -- no threshold was baked into the data collection.</p>
+    <p>Both classifiers produced a continuous <code>risk_score</code> from 0.0 to 1.0 for each example. All threshold analysis is post-hoc; no threshold was baked into the data collection.</p>
 
     <hr>
 
@@ -251,7 +251,7 @@
     <p><strong>Source:</strong> <a href="https://archive.ics.uci.edu/dataset/228/sms+spam+collection" style="color: var(--accent);">UCI SMS Spam Collection</a><br>
     <strong>Size:</strong> 5,572 messages (747 scam/spam, 4,825 ham)</p>
 
-    <p>One important note on labels: the UCI dataset includes all commercial spam (promotional texts, marketing messages), not only fraud. BATLR is designed specifically for scam and fraud detection. When BATLR assigns a score of 0.5 to a promotional message instead of 0.9, the UCI label says "wrong" -- but BATLR's risk calibration is arguably correct. This means the UCI recall numbers slightly understate BATLR's true performance on genuine fraud.</p>
+    <p>One important note on labels: the UCI dataset includes all commercial spam (promotional texts, marketing messages), not only fraud. BATLR is designed specifically for scam and fraud detection. When BATLR assigns a score of 0.5 to a promotional message instead of 0.9, the UCI label says "wrong," but BATLR's risk calibration is arguably correct. This means the UCI recall numbers slightly understate BATLR's true performance on genuine fraud.</p>
 
     <p>Neither classifier was trained or fine-tuned on this dataset. Both are zero-shot. The dataset is purely an evaluation corpus.</p>
 
@@ -263,7 +263,7 @@
     <p>Each of the 5,572 examples was passed as a single-message conversation to both classifiers via the OpenAI API, parallelized across 8 concurrent workers. Both classifiers saw identical inputs. Results were stored in a Parquet file with one row per example.</p>
 
     <h3>Escalation</h3>
-    <p>BATLR's production pipeline optionally escalates borderline cases from <code>gpt-4o-mini</code> to <code>gpt-4o</code> for a second opinion. For this benchmark, escalation was disabled so that both classifiers ran on <code>gpt-4o-mini</code> only. This is a conservative choice -- production BATLR with escalation enabled would perform better on borderline cases.</p>
+    <p>BATLR's production pipeline optionally escalates borderline cases from <code>gpt-4o-mini</code> to <code>gpt-4o</code> for a second opinion. For this benchmark, escalation was disabled so that both classifiers ran on <code>gpt-4o-mini</code> only. This is a conservative choice; production BATLR with escalation enabled would perform better on borderline cases.</p>
 
     <h3>Threshold analysis</h3>
     <p>The raw output is a continuous score. A binary prediction is produced by applying a threshold: scores at or above the threshold are classified as scam. We report results at three thresholds:</p>
@@ -274,7 +274,7 @@
         <tbody>
           <tr><td>0.5</td><td>Catch everything suspicious (high-recall mode)</td></tr>
           <tr><td>0.8</td><td>Moderate recall, very low false positives</td></tr>
-          <tr class="highlight"><td>0.9</td><td>Recommended ban threshold -- high-confidence bans only</td></tr>
+          <tr class="highlight"><td>0.9</td><td>Recommended ban threshold (high-confidence bans only)</td></tr>
         </tbody>
       </table>
     </div>
@@ -307,7 +307,7 @@
       </table>
     </div>
 
-    <p>The PR AUC gap (+9.7 percentage points) is much larger than ROC AUC suggests. PR AUC is the more informative metric here because it measures performance in the high-precision region that matters for ban decisions -- exactly where the baseline collapses at threshold 0.9.</p>
+    <p>The PR AUC gap (+9.7 percentage points) is much larger than ROC AUC suggests. PR AUC is the more informative metric here because it measures performance in the high-precision region that matters for ban decisions, which is exactly where the baseline collapses at threshold 0.9.</p>
 
     <h3>Threshold breakdown (2% scam prevalence)</h3>
 
@@ -346,7 +346,7 @@
     <h2>5. Key Findings</h2>
 
     <h3>Finding 1: BATLR flags half the false positives at the permissive threshold</h3>
-    <p>At threshold 0.5, BATLR flags 310 innocent users vs. the baseline's 630 -- a 2x reduction in false alarms -- while catching more scammers (729 vs. 719). For a platform with 1 million active users and 1% scam rate, that is roughly 62,000 fewer innocent users flagged per classification cycle.</p>
+    <p>At threshold 0.5, BATLR flags 310 innocent users vs. the baseline's 630, a 2x reduction in false alarms, while catching more scammers (729 vs. 719). For a platform with 1 million active users and 1% scam rate, that is roughly 62,000 fewer innocent users flagged per classification cycle.</p>
 
     <h3>Finding 2: At high-confidence thresholds, the baseline collapses</h3>
     <p>At threshold 0.9, BATLR catches 84.2% of scammers. The baseline catches only 41.8%. The baseline becomes so conservative that it misses more than half of all scammers while trying to avoid false positives. BATLR catches 629 scammers vs. the baseline's 312 at the same threshold: 2x more scammers caught.</p>
@@ -362,7 +362,7 @@
     </ul>
     <p>The baseline at threshold 0.9 has nearly the same false alarm rate (0.7%) but catches only 41.8% of scammers, less than half. For platforms using bans as the enforcement action, BATLR at 0.9 is the operating point to use.</p>
 
-    <h3>Finding 4: Escalation not yet tested -- numbers are conservative</h3>
+    <h3>Finding 4: Escalation not yet tested; numbers are conservative</h3>
     <p>These results used <code>gpt-4o-mini</code> only. Production BATLR escalates borderline cases to <code>gpt-4o</code> for a second opinion, which would improve precision on the borderline cases most likely to generate false positives. All numbers above are therefore a lower bound on production BATLR performance.</p>
 
     <hr>
@@ -371,7 +371,7 @@
 
     <p><strong>Dataset label mismatch.</strong> UCI "spam" includes marketing texts that are low-value but not fraudulent. BATLR is calibrated for fraud specifically. When BATLR correctly gives a promotional message a score of 0.5 instead of 0.9, the UCI label counts it as a miss. This understates BATLR's recall on actual fraud.</p>
 
-    <p><strong>Single-message conversations.</strong> The UCI dataset is individual SMS messages, not multi-message conversations. BATLR is designed for conversation context -- multiple messages from the same user over time. Performance on realistic multi-message inputs would likely be higher, since scam patterns are often more detectable across a conversation arc.</p>
+    <p><strong>Single-message conversations.</strong> The UCI dataset is individual SMS messages, not multi-message conversations. BATLR is designed for conversation context: multiple messages from the same user over time. Performance on realistic multi-message inputs would likely be higher, since scam patterns are often more detectable across a conversation arc.</p>
 
     <p><strong>No escalation.</strong> As noted above, <code>gpt-4o</code> escalation was disabled for cost efficiency. Real production performance will be better.</p>
 
